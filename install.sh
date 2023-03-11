@@ -50,11 +50,11 @@ then
 	)
 fi
 
-if [ ! -d demo ]
+if [ ! -d hello ]
 then
-	git clone https://github.com/miracle-42/forms42.demo demo
+	git clone https://github.com/chlordk/futureforms.hello hello
 	(
-		cd demo
+		cd hello
 		git checkout version-2.1-dev
 		npm install
 		npm run build
@@ -64,10 +64,10 @@ fi
 echo Check \'hr\' database exists:
 if ! sudo -u postgres psql -qAt -d hr -c 'SELECT 1' 
 then
-	sudo -u postgres psql -c "CREATE USER hr WITH PASSWORD 'hr'"
-	sudo -u postgres psql -c "CREATE DATABASE hr OWNER hr"
-	export PGPASSWORD=hr
-	psql -h localhost -U hr -d hr < demo/data/data.demo
+	sudo -u postgres psql -c "CREATE USER hello WITH PASSWORD 'hello'"
+	sudo -u postgres psql -c "CREATE DATABASE hello OWNER hello"
+	export PGPASSWORD=hello
+	psql -h localhost -U hello -d hello < hello/data/data.sql
 fi
 
 if [ ! -d database.js ]
@@ -80,13 +80,14 @@ then
 	(
 		cd database.js
 		unzip ../database.js.git/downloads/database.js.zip
-		sed -i 's|"path": "./app"|"path": "../demo/dist"|' conf/config.json
+		sed -i 's|"path": "./app"|"path": "../hello/dist"|' conf/config.json
 	)
 fi
 
 if [ ! -e database.js/logs/inst00/server.log.0.lck ]
 then
 	echo Starting database.js...
+	# Start must be done from this directory:
 	( cd database.js && bin/database.js start )
 fi
 database.js/bin/database.js status
@@ -94,4 +95,4 @@ database.js/bin/database.js status
 echo
 echo Stop database.js command: ./database.js/bin/database.js stop
 echo
-echo Start demo with a browser at: http://localhost:9002/
+echo Start the demo with a browser at: http://localhost:9002/
