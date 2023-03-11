@@ -13,6 +13,10 @@ which serves access to a database.
 
 ![Blocks](images/blocks.svg)
 
+The demo will show a HTML page with a table:
+
+![Countries](images/countriesTable.png)
+
 ## Installation
 
 The installation can be made with the script [install.sh](install.sh)
@@ -32,6 +36,7 @@ The following packages will be install:
 * OpenJDK Java - used by database.js web service
 * npm - NodeJS and Typescript compiler
 * git - repo tool
+* jq - JSON command line editor
 * unzip
 
 
