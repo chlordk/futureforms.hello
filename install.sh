@@ -55,7 +55,6 @@ then
 	git clone https://github.com/chlordk/futureforms.hello hello
 	(
 		cd hello
-		git checkout version-2.1-dev
 		npm install
 		npm run build
 	)
