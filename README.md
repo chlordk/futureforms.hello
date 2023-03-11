@@ -15,7 +15,7 @@ which serves access to a database.
 
 ## Installation
 
-The installation can be made with the script [install.sh]
+The installation can be made with the script [install.sh](install.sh)
 or it can be made manually.
 
 Create a new folder and run **install.sh** in there.
